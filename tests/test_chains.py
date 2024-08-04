@@ -6,7 +6,7 @@ from langchain_core.language_models import BaseLanguageModel, FakeListLLM
 from langchain_core.runnables import RunnableLambda
 from langchain_openai import ChatOpenAI
 
-from llm_data_extraction.chains import pre_process_chain, extract_chain, validate_chain, main_chain
+from llm_data_extraction.chains import pre_process_chain, extract_chain, validate_chain, main_chain, field_chain
 from llm_data_extraction.templates import SOAP_EN_INSTRUCTIONS
 
 
@@ -55,6 +55,38 @@ def test_extract_chain():
     expected = "<dummy extracted>"
     res = extract_chain(get_fake_llm(expected)).invoke(inputs)
     assert expected == res
+
+
+@pytest.mark.fast
+def test_field_chain():
+    inputs = {
+        "transcript": "<dummy transcript>",
+        "language": "<dummy language>"
+    }
+    field = "<dummy field>"
+    instructions = "<dummy instructions>"
+    extract_llm = get_fake_llm("<dummy extracted>")
+    validate_llm = get_fake_llm("true")
+    resolve_llm = get_fake_llm("<dummy resolved>")
+    res = field_chain(field, instructions, extract_llm, validate_llm, resolve_llm).invoke(inputs)
+
+    assert "<dummy extracted>" == res
+
+
+@pytest.mark.fast
+def test_field_chain_invalid():
+    inputs = {
+        "transcript": "<dummy transcript>",
+        "language": "<dummy language>"
+    }
+    field = "<dummy field>"
+    instructions = "<dummy instructions>"
+    extract_llm = get_fake_llm("<dummy extracted>")
+    validate_llm = get_fake_llm("false")
+    resolve_llm = get_fake_llm("<dummy resolved>")
+    res = field_chain(field, instructions, extract_llm, validate_llm, resolve_llm).invoke(inputs)
+
+    assert "<dummy resolved>" == res
 
 
 @pytest.mark.slow
