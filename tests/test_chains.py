@@ -6,7 +6,7 @@ from langchain_core.language_models import BaseLanguageModel, FakeListLLM
 from langchain_core.runnables import RunnableLambda
 from langchain_openai import ChatOpenAI
 
-from llm_data_extraction.chains import pre_process_chain, extract_chain, validate_chain, main_chain, field_chain
+from llm_data_extraction.chains import pre_process_chain, extract_chain, main_chain, field_chain
 from llm_data_extraction.templates import SOAP_EN_INSTRUCTIONS
 
 
