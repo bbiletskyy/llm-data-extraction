@@ -6,26 +6,22 @@ A dialog between a doctor and a patient is used as an example. During the dialog
 the patient about their complains and prescribes a treatment. 
 
 OpenAI LLMs extract complain and treatment fields specified in the extraction template. 
+The extraction template contains data field names and descriptions (extraction instructions).
 Instead of using 
 [LangChain's built in capability to returning structured](https://python.langchain.com/v0.2/docs/how_to/structured_output/), 
 data we use custom setup due to several reasons:
-1. relatively large and slow models are capable of generating structured outputs, while we would like to use small 
+* relatively large and slow models are capable of generating structured outputs, while we would like to use small 
 and fast in-house model for extraction;
-2. because of latency latency considerations we want to extract template fields in parallel;
-3. we would like to train our in-house extraction model, which is easier to do on a field level 
+* because of latency latency considerations we want to extract template fields in parallel;
+* we would like to train our in-house extraction model, which is easier to do on a field level 
 rather then on the whole document;
-4. we would like to generate results in streaming mode.
+* we would like to generate results in streaming mode.
   
-The extraction template contains data field name and description (extraction instructions). 
-Another LLM verifies extracted data for correctness and for possible hallucinations. 
-And yet another LLM resolves incorrectly extracted data if needed.
-
-
-Different LLMs are used to address latency, costs and efficiency: 
-* extraction LLM is meant to be a small and fast in-house LLM optimised for domain-specific tasks
-* validation LLM is meant to be fast general purpose LLM producing only few tokens and capable of assessing results of the extraction LLM
+We use 3 different LLMs for extraction to address latency, costs and efficiency: 
+* extraction LLM is meant to be a small and fast in-house LLM optimised for domain-specific tasks;
+* validation LLM is meant to be fast general purpose LLM producing only few tokens and capable of assessing results of the extraction LLM;
 * resolving LLM is meant to be a general purpose powerful, slow and expensive model, which is launched only when the extraction model did not manage to do it's job. 
-The resolving LLM used the same prompt as the extraction LLM. The outputs of the resolving LLM are used for training the extraction LLM.                     
+The resolving LLM uses the same prompt and as the extraction LLM. The outputs of the resolving LLM are supposed to be used for training of the extraction LLM.                     
 
 
 ## How to run 
