@@ -1,0 +1,83 @@
+{
+  "input": {
+      "request_id": 1234,
+      "in": {
+        "transcript": [
+          {
+            "speaker": "Doctor",
+            "message": "Good morning! How are you feeling today?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "Morning, Doctor. I've been better, to be honest."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Oh no, what's been bothering you?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "I've been having some pretty bad stomach pain lately."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "I'm sorry to hear that. Can you tell me more about the pain? How long has this been going on?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "It's been about four days now. The pain is mostly in the upper part of my stomach."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "I see. Is the pain constant, or does it come and go?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "It comes and goes. Sometimes it's sharp, other times it's more of a dull ache."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Have you noticed if anything seems to trigger it, like eating certain foods or specific activities?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "I haven't noticed any specific triggers, but it does seem worse after eating."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Alright. Have you had any other symptoms, like nausea, vomiting, or changes in bowel movements?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "I've felt a bit nauseous, but no vomiting. My bowel movements have been normal."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Got it. Based on what you're describing, it could be a few different things. I'd like to start with a physical exam and perhaps some lab tests. In the meantime, I'll prescribe you something to help manage the pain and reduce any potential stomach acid."
+          },
+          {
+            "speaker": "Patient",
+            "message": "That would be great, thank you."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "I'll give you a prescription for a mild antacid and a pain reliever. Make sure to take them as directed and avoid any spicy or acidic foods until we figure this out."
+          },
+          {
+            "speaker": "Patient",
+            "message": "Understood. I'll be careful with my diet. Thanks, Doctor."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "You're welcome. If things don't improve in a few days, or if the pain gets worse, please come back. Take care and feel better soon!"
+          },
+          {
+            "speaker": "Patient",
+            "message": "Thanks, I will. Goodbye!"
+          }
+        ],
+        "language": "english"
+      },
+      "out": "soap_en"
+    }
+}

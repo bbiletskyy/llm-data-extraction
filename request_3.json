@@ -1,0 +1,84 @@
+{
+  "input": {
+      "request_id": 1234,
+      "in": {
+        "transcript": [
+          {
+            "speaker": "Doctor",
+            "message": "Hello! How are you doing today?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "Hi, Doctor. Not too great, actually."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Oh no, what's going on?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "I've been having some pain in my ankle."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "I'm sorry to hear that. How long have you been experiencing this pain?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "It started a couple of days ago."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Did you injure it, or did the pain come on gradually?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "It happened suddenly. I twisted it while walking down some stairs."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Ouch, that sounds painful. Is the pain constant, or does it come and go?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "It's mostly constant, especially when I put weight on it."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Any swelling or bruising?"
+          },
+          {
+            "speaker": "Patient",
+            "message": "Yes, there's some swelling and a bit of bruising around the ankle."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "Alright. Based on what you're describing, it could be a sprain. Let's have a look and see how severe it might be. In the meantime, I'll recommend some rest, ice, compression, and elevation. I'll also prescribe a pain reliever to help with the discomfort."
+          },
+          {
+            "speaker": "Patient",
+            "message": "Okay, that sounds good."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "I'll write you a prescription for an anti-inflammatory pain reliever. Be sure to follow the RICE protocol—rest, ice, compression, and elevation—and avoid putting too much weight on your ankle until it heals."
+          },
+          {
+            "speaker": "Patient",
+            "message": "Got it. I'll be careful. Thanks, Doctor."
+          },
+          {
+            "speaker": "Doctor",
+            "message": "You're welcome. If the swelling doesn't go down or if the pain gets worse, come back, and we'll do further tests. Take care!"
+          },
+          {
+            "speaker": "Patient",
+            "message": "Will do. Thanks again. Goodbye!"
+          }
+        ]
+        ,
+        "language": "english"
+      },
+      "out": "soap_en"
+    }
+}
