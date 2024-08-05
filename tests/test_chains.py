@@ -3,6 +3,8 @@ from typing import Dict
 
 import pytest
 from langchain_core.language_models import BaseLanguageModel, FakeListLLM
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableLambda
 from langchain_openai import ChatOpenAI
 
@@ -39,7 +41,6 @@ def test_pre_process_chain():
     }
 
     res = RunnableLambda(pre_process_chain).invoke(input)
-    print(res)
     assert res.get("transcript") == """[{"speaker": "Doctor", "message": "Hello! How are you today?"}, {"speaker": "Patient", "message": "Good afternoon, Doctor. I\'m doing okay, thanks."}]"""
     assert res.get("language") == "english"
     assert res.get("template") == "soap_en"
@@ -90,7 +91,8 @@ def test_field_chain_invalid():
 
 
 @pytest.mark.slow
-def test_main_chain():
+@pytest.mark.asyncio
+def test_main_chain_invoke():
     api_key = os.getenv("OPENAI_API_KEY")
     extract_llm = get_test_llm(api_key)
     validate_llm = get_test_llm(api_key)
@@ -100,6 +102,20 @@ def test_main_chain():
     res = main_chain(extract_llm, validate_llm, resolve_llm).invoke(inputs)
     for field in SOAP_EN_INSTRUCTIONS:
         assert field in res
+
+
+@pytest.mark.slow
+@pytest.mark.asyncio
+async def test_main_chain_stream():
+    api_key = os.getenv("OPENAI_API_KEY")
+    extract_llm = get_test_llm(api_key)
+    validate_llm = get_test_llm(api_key)
+    resolve_llm = get_test_llm(api_key)
+    inputs = get_test_input()
+    chain = main_chain(extract_llm, validate_llm, resolve_llm)
+
+    async for chunk in chain.astream(inputs):
+        assert chunk is not None
 
 
 def get_test_input() -> Dict:
